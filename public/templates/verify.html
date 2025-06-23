@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Xác thực Email</title>
+    <link rel="stylesheet" href="/styles/verify.css">
+    <script defer src="/scripts/verify.js" type="module"></script>
+</head>
+
+<body>
+    <div class="otp-container">
+        <h2>Xác thực email</h2>
+        <p>Nhập mã gồm 6 chữ số đã gửi đến email</p>
+        <div class="otp-inputs">
+            <input type="text" maxlength="1" class="otp-box" />
+            <input type="text" maxlength="1" class="otp-box" />
+            <input type="text" maxlength="1" class="otp-box" />
+            <input type="text" maxlength="1" class="otp-box" />
+            <input type="text" maxlength="1" class="otp-box" />
+            <input type="text" maxlength="1" class="otp-box" />
+        </div>
+        <button id="verifyBtn">Xác nhận</button>
+        <p id="errorText" class="hidden">Mã OTP không đúng!</p>
+        <p id="resendText"><a href="#" id="resendBtn">Gửi lại mã</a></p>
+    </div>
+</body>
+
+</html>

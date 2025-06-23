@@ -1,0 +1,87 @@
+:root {
+    --main-color   : #1abc9c;
+    --danger-color : #e74c3c;
+    --bg-color     : #2c3e50;
+    --text-color   : #ecf0f1;
+    --border-radius: 8px;
+}
+
+body {
+    margin          : 0;
+    font-family     : Arial, sans-serif;
+    background-color: var(--bg-color);
+    color           : var(--text-color);
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    height          : 100vh;
+}
+
+.otp-container {
+    background-color: #34495e;
+    padding         : 30px 40px;
+    border-radius   : var(--border-radius);
+    box-shadow      : 0 0 10px rgba(0, 0, 0, 0.4);
+    text-align      : center;
+    width           : 360px;
+}
+
+.otp-container h2 {
+    margin-top: 0;
+    color     : var(--main-color);
+}
+
+.otp-inputs {
+    display        : flex;
+    justify-content: center;
+    gap            : 10px;
+    margin         : 20px 0;
+}
+
+.otp-box {
+    width           : 40px;
+    height          : 50px;
+    font-size       : 24px;
+    text-align      : center;
+    border-radius   : var(--border-radius);
+    border          : none;
+    background-color: #ecf0f1;
+    color           : #2c3e50;
+}
+
+.otp-box:focus {
+    outline: 2px solid var(--main-color);
+}
+
+#verifyBtn {
+    background-color: var(--main-color);
+    color           : white;
+    border          : none;
+    padding         : 10px 20px;
+    border-radius   : var(--border-radius);
+    cursor          : pointer;
+    font-weight     : bold;
+}
+
+#verifyBtn:hover {
+    background-color: #16a085;
+}
+
+#errorText {
+    color     : var(--danger-color);
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+#resendText {
+    margin-top: 15px;
+    font-size : 14px;
+}
+
+#resendText a {
+    color          : var(--main-color);
+    text-decoration: none;
+}

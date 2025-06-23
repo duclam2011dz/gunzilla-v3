@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gunzilla - Auth</title>
+    <link rel="stylesheet" href="../styles/auth.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="auth-card">
+        <form id="loginForm" class="auth-form active">
+            <h2>Login</h2>
+            <input type="text" id="loginUsername" placeholder="Username" />
+            <div class="password-wrapper">
+                <input type="password" id="loginPassword" placeholder="Password" />
+                <i class="fa-solid fa-eye" id="toggleLoginPassword"></i>
+            </div>
+            <button id="loginBtn" type="submit">Đăng nhập</button>
+            <p><span class="link-text">Chưa có tài khoản?</span> <a href="#" id="toRegister" class="link-accent">Tạo tài
+                    khoản mới</a></p>
+        </form>
+
+        <form id="registerForm" class="auth-form">
+            <h2>Register</h2>
+            <input type="text" id="registerUsername" placeholder="Username" />
+            <input type="email" id="registerEmail" placeholder="Email" />
+            <div class="password-wrapper">
+                <input type="password" id="registerPassword" placeholder="Password" />
+                <i class="fa-solid fa-eye" id="toggleRegisterPassword"></i>
+            </div>
+            <input type="password" id="registerRetype" placeholder="Retype Password" />
+            <button id="registerBtn" type="submit">Đăng ký</button>
+            <p><span class="link-text">Đã có tài khoản rồi?</span> <a href="#" id="toLogin" class="link-accent">Đăng
+                    nhập vào tài khoản</a></p>
+        </form>
+    </div>
+
+    <script src="../scripts/auth.js"></script>
+</body>
+
+</html>

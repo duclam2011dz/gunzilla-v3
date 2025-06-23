@@ -1,0 +1,137 @@
+:root {
+    --card-width : 250px;
+    --card-height: 300px;
+}
+
+body {
+    margin     : 0;
+    font-family: sans-serif;
+    background : #111;
+    color      : white;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.shop-container {
+    display        : flex;
+    overflow-x     : auto;
+    padding        : 20px;
+    gap            : 20px;
+    scroll-behavior: smooth;
+}
+
+.shop-card {
+    min-width       : var(--card-width);
+    height          : var(--card-height);
+    background-color: #222;
+    border-radius   : 10px;
+    padding         : 15px;
+    text-align      : center;
+    position        : relative;
+    box-shadow      : 0 0 10px #000;
+}
+
+.shop-card .price {
+    font-size: 1.1rem;
+    margin   : 10px 0;
+}
+
+.shop-card button {
+    background-color: limegreen;
+    border          : none;
+    padding         : 10px 20px;
+    border-radius   : 6px;
+    cursor          : pointer;
+    font-weight     : bold;
+}
+
+.skin-preview {
+    width        : 100%;
+    height       : 100px;
+    margin       : 10px 0;
+    border-radius: 8px;
+}
+
+/* Skin hiệu ứng */
+
+.lava {
+    background: linear-gradient(45deg, red, orange);
+    animation : lavaMove 1s infinite linear;
+}
+
+@keyframes lavaMove {
+    0% {
+        background-position: 0%
+    }
+
+    100% {
+        background-position: 100%
+    }
+}
+
+.neon {
+    background: #0ff;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+.blackhole {
+    position  : relative;
+    background: radial-gradient(circle, #000 0%, #111 100%);
+    overflow  : hidden;
+}
+
+.blackhole::before {
+    content         : "";
+    position        : absolute;
+    width           : 200%;
+    height          : 200%;
+    top             : -50%;
+    left            : -50%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size : 20px 20px;
+    animation       : swirlParticles 3s linear infinite;
+    opacity         : 0.3;
+    filter          : blur(1px);
+    pointer-events  : none;
+}
+
+.galaxy {
+    background     : linear-gradient(90deg, purple, navy, black);
+    background-size: 300% 100%;
+    animation      : galaxyMove 3s infinite linear;
+}
+
+#shopCloseBtn {
+    position : fixed;
+    top      : 15px;
+    right    : 20px;
+    font-size: 24px;
+    cursor   : pointer;
+    z-index  : 100;
+    color    : white;
+}
+
+@keyframes galaxyMove {
+    0% {
+        background-position: 0%
+    }
+
+    100% {
+        background-position: 100%
+    }
+}
+
+@keyframes swirlParticles {
+    0% {
+        transform: scale(1.2) rotate(0deg);
+        opacity  : 0.3;
+    }
+
+    100% {
+        transform: scale(0.2) rotate(720deg);
+        opacity  : 0;
+    }
+}

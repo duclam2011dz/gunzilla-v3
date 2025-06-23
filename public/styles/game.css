@@ -1,0 +1,180 @@
+:root {
+    --bg-color    : #111;
+    --grid-color  : rgba(255, 255, 255, 0.05);
+    --player-color: lime;
+    --bullet-color: red;
+}
+
+body {
+    margin          : 0;
+    overflow        : hidden;
+    background-color: var(--bg-color);
+}
+
+#gameOverUI {
+    position     : fixed;
+    top          : 40%;
+    left         : 50%;
+    transform    : translate(-50%, -50%);
+    background   : #222;
+    padding      : 30px;
+    border-radius: 10px;
+    text-align   : center;
+    z-index      : 10;
+    color        : white;
+}
+
+#gameOverUI.hidden {
+    display: none;
+}
+
+#leaderboard {
+    position        : fixed;
+    top             : 10px;
+    right           : 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding         : 10px;
+    border-radius   : 8px;
+    color           : white;
+}
+
+#leaderboard ul {
+    list-style: none;
+    margin    : 0;
+    padding   : 0;
+}
+
+#leaderboardList li {
+    font-family: monospace;
+    font-size  : 14px;
+    padding    : 2px 0;
+}
+
+#gameOverUI button {
+    margin          : 10px;
+    padding         : 10px 20px;
+    font-size       : 1rem;
+    border          : none;
+    border-radius   : 5px;
+    cursor          : pointer;
+    background-color: #00cc88;
+    color           : black;
+    font-weight     : bold;
+    transition      : background-color 0.2s ease;
+}
+
+#gameOverUI button:hover {
+    background-color: #009966;
+}
+
+#loadingScreen {
+    position        : fixed;
+    top             : 0;
+    left            : 0;
+    width           : 100%;
+    height          : 100%;
+    background-color: #111;
+    color           : white;
+    z-index         : 100;
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    align-items     : center;
+}
+
+#loadingBarContainer {
+    width           : 60%;
+    height          : 20px;
+    background-color: #444;
+    border-radius   : 10px;
+    overflow        : hidden;
+}
+
+#loadingBar {
+    width           : 0%;
+    height          : 100%;
+    background-color: lime;
+    transition      : width 0.3s;
+}
+
+#loadingPercent {
+    margin-top: 10px;
+    font-size : 1.2rem;
+}
+
+#joystickZone {
+    position: absolute;
+    bottom  : 40px;
+    left    : 40px;
+    width   : 150px;
+    height  : 150px;
+    z-index : 100;
+}
+
+.dpad {
+    position      : absolute;
+    bottom        : 40px;
+    left          : 40px;
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    gap           : 5px;
+    z-index       : 100;
+}
+
+.dpad-middle {
+    display        : flex;
+    gap            : 5px;
+    justify-content: center;
+}
+
+.dpad button {
+    width              : 50px;
+    height             : 50px;
+    font-size          : 24px;
+    border-radius      : 8px;
+    background-color   : #1abc9c;
+    color              : white;
+    border             : none;
+    box-shadow         : 0 2px 5px rgba(0, 0, 0, 0.4);
+    touch-action       : none;
+    user-select        : none;
+    -webkit-user-select: none;
+    -moz-user-select   : none;
+    -ms-user-select    : none;
+    outline            : none;
+}
+
+.dpad button:focus {
+    outline: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.hud-stats {
+    position     : absolute;
+    top          : 10px;
+    left         : 10px;
+    font-family  : monospace;
+    background   : rgba(0, 0, 0, 0.4);
+    padding      : 6px 12px;
+    border-radius: 8px;
+    z-index      : 100;
+    color        : white;
+    font-size    : 14px;
+}
+
+.hud-stats span {
+    display      : block;
+    margin-bottom: 4px;
+}
+
+canvas {
+    -webkit-touch-callout: none;
+    -webkit-user-select  : none;
+    -moz-user-select     : none;
+    -ms-user-select      : none;
+    user-select          : none;
+}

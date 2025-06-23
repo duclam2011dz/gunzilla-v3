@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Gunzilla - Settings</title>
+    <link rel="stylesheet" href="../styles/settings.css" />
+</head>
+
+<body>
+    <div class="settings-card">
+        <button id="closeBtn">X</button>
+        <h2>Settings</h2>
+
+        <section>
+            <h3>Skin</h3>
+            <div class="skins">
+                <div class="skin" data-color="red" style="background-color: red;"></div>
+                <div class="skin" data-color="blue" style="background-color: blue;"></div>
+                <div class="skin" data-color="green" style="background-color: green;"></div>
+                <div class="skin" data-color="yellow" style="background-color: yellow;"></div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Điều khiển</h3>
+            <label for="controlSelect">Chế độ điều khiển:</label>
+            <select id="controlSelect">
+                <option value="keyboard">Bàn phím</option>
+                <option value="joystick">Joystick (mobile)</option>
+                <option value="dpad">D-pad (nút rời)</option>
+            </select>
+        </section>
+
+        <section>
+            <h3>Tài khoản</h3>
+            <button id="logoutBtn">Logout</button>
+
+            <h3>Quốc tịch</h3>
+            <div class="flag-select">
+                <select id="flagSelect">
+                    <option value="vn">🇻🇳 Việt Nam</option>
+                    <option value="us">🇺🇸 USA</option>
+                    <option value="gb">🇬🇧 UK</option>
+                    <option value="jp">🇯🇵 Nhật Bản</option>
+                    <option value="kr">🇰🇷 Hàn Quốc</option>
+                    <option value="fr">🇫🇷 Pháp</option>
+                    <option value="de">🇩🇪 Đức</option>
+                    <option value="it">🇮🇹 Ý</option>
+                    <option value="es">🇪🇸 Tây Ban Nha</option>
+                    <option value="br">🇧🇷 Brazil</option>
+                    <option value="ca">🇨🇦 Canada</option>
+                    <option value="ru">🇷🇺 Nga</option>
+                    <option value="cn">🇨🇳 Trung Quốc</option>
+                    <option value="th">🇹🇭 Thái Lan</option>
+                    <option value="ph">🇵🇭 Philippines</option>
+                    <option value="id">🇮🇩 Indonesia</option>
+                    <option value="in">🇮🇳 Ấn Độ</option>
+                    <option value="my">🇲🇾 Malaysia</option>
+                    <option value="au">🇦🇺 Úc</option>
+                    <option value="sg">🇸🇬 Singapore</option>
+                </select>
+            </div>
+        </section>
+    </div>
+
+    <script src="../scripts/settings.js"></script>
+</body>
+
+</html>

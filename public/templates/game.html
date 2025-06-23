@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gunzilla Game</title>
+    <link rel="stylesheet" href="../styles/game.css" />
+</head>
+
+<body>
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="joystickZone"></div>
+
+    <div id="dpad" class="dpad hidden">
+        <button id="btn-up">▲</button>
+        <div class="dpad-middle">
+            <button id="btn-left">◀</button>
+            <button id="btn-down">▼</button>
+            <button id="btn-right">▶</button>
+        </div>
+    </div>
+
+    <div id="hud-stats" class="hud-stats">
+        <span id="fpsStat">FPS: --</span>
+        <span id="pingStat">Ping: -- ms</span>
+    </div>
+
+    <div id="gameOverUI" class="hidden">
+        <h1>Game Over</h1>
+        <button id="menuBtn">Menu</button>
+        <button id="replayBtn">Replay</button>
+    </div>
+
+    <div id="leaderboard">
+        <h3>🏆 Top Players</h3>
+        <ul id="leaderboardList"></ul>
+    </div>
+
+    <div id="loadingScreen">
+        <div id="loadingBarContainer">
+            <div id="loadingBar"></div>
+        </div>
+        <p id="loadingPercent">Loading... 0%</p>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.9.0/nipplejs.min.js"></script>
+    <script type="module" src="../scripts/game.js"></script>
+</body>
+
+</html>
