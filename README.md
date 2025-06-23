@@ -1,96 +1,123 @@
+# 🔫 Gunzilla v3.0 – Multiplayer Top-down Shooter (Anti-Cheat + Mobile + OTP + Quốc Tịch)
 
-# Gunzilla - Web Game Bắn Súng Top-Down | Version 2.0
-
-🔥 **BẢN BIG UPDATE v2.0** – CHÁY NỔ THẬT SỰ!
-
----
-
-## 🚀 Tổng Quan
-
-Phiên bản **Gunzilla 2.0** mang đến trải nghiệm **chuyên sâu và thương mại hóa mạnh mẽ**:
-- Skin VIP không còn chỉ là "mỹ phẩm" — giờ đã có **buff sức mạnh thực sự**
-- Hệ thống **hiệu ứng animation VIP** bằng CSS + JS canvas
-- **Shop tích hợp Stripe**, chuẩn bị thương mại hóa kiếm tiền từ game
-- Đồng bộ **di chuyển chậm (slow), đốt máu (burn), tăng sát thương/HP** cho từng skin
-- **Fix nhiều lỗi logic** liên quan tới render, sync, hiệu ứng
-- **Nâng cấp UX** ở mọi trang: Auth, Menu, Settings
+Gunzilla v3.0 là bản nâng cấp cực đại của tựa webgame bắn súng multiplayer góc nhìn top-down do [LâmĐZ2k11](https://github.com/duclam2011dz) phát triển, hỗ trợ đồng bộ real-time, chống cheat, xác thực email và hỗ trợ full mobile điều khiển.
 
 ---
 
-## ✅ TÍNH NĂNG MỚI ĐÃ CẬP NHẬT
+## 🚀 Tính năng mới trong v3.0
 
-### 🎨 Skin VIP có sức mạnh riêng:
-| Skin         | Buff Sát Thương | Buff HP | Hiệu Ứng Khi Gây Sát Thương |
-|--------------|------------------|---------|------------------------------|
-| Lava         | +50%             | +20%    | 🔥 Đốt 5 HP/s trong 3–5s     |
-| Neon         | +75%             | +50%    | –                            |
-| Blackhole    | +10%             | +25%    | 🌀 Làm chậm 50% trong 10s     |
-| Galaxy       | +100%            | +10%    | –                            |
+### 🔒 Anti-Cheat (phát hiện và auto-ban):
+- Phát hiện **auto-shoot** (bắn quá 15 viên/s)
+- Phát hiện **speedhack** (di chuyển nhanh bất thường kể cả đường chéo)
+- Phát hiện **auto-aim** (góc bắn luôn chính xác)
+- Cảnh báo qua **email** (Nodemailer)
+- Auto-ban sau 3 lần vi phạm (trả về menu)
 
-### 💸 Shop VIP:
-- 1 gói xóa quảng cáo ($5)
-- 4 skin VIP: lava, neon, blackhole, galaxy ($3 mỗi loại)
-- Thanh toán qua Stripe
-- Skin mua sẽ được lưu vào database và xuất hiện trong settings
+### 📧 Xác thực Email qua OTP:
+- Gửi **mã OTP 6 số** khi đăng ký
+- Giao diện đẹp với 6 ô nhập mã
+- Hết hạn OTP sau 5 phút
+- Chỉ sau khi xác thực mới được vào game
 
-### 🌀 Slow hoạt động thực sự:
-- Server nhận `dirX/dirY` thay vì `x/y`
-- Slow từ skin blackhole giảm tốc 50% real-time
-- Không còn gửi tọa độ tuyệt đối — chống cheat, sync tốt hơn
+### 📱 Hỗ trợ mobile:
+- **Joystick kéo-thả** (nipplejs)
+- **D-pad 4 nút** (↑ ↓ ← →)
+- Cho phép chọn **chế độ điều khiển**: bàn phím / joystick / dpad
+- Tự ẩn/bật input tương ứng với lựa chọn
 
-### 💥 Animation nâng cấp cho Lava/Neon/Galaxy:
-- Lava: glow đỏ-cam + particle bốc hơi từ tâm
-- Neon: phát sáng theo nhịp, glow mượt
-- Galaxy: swirl gradient + sao lấp lánh động
-- Tất cả render đúng canvas, đồng bộ trên các máy
+### 🏳 Quốc tịch & Quốc kỳ:
+- Người chơi có thể chọn **quốc tịch** từ 20 nước trong Settings
+- Hiển thị **quốc kỳ cạnh tên** trong game
+- Lưu quốc tịch vào MongoDB (`UserSchema.country`)
+- Đồng bộ quốc kỳ trong **leaderboard**
 
-### 👁️ Giao diện Auth cải tiến:
-- Mắt toggle ẩn/hiện mật khẩu có 2 trạng thái rõ ràng (`fa-eye`, `fa-eye-slash`)
-- Không áp dụng cho retype-password để đảm bảo bảo mật
+### 📊 HUD FPS & Ping:
+- Hiển thị HUD realtime ở góc trái:
+  - FPS: tốc độ khung hình
+  - Ping: độ trễ kết nối
+- **Tự đổi màu** theo mức:
+  - 🟢 Xanh đậm: FPS ≥ 60 / Ping ≤ 50ms (mượt)
+  - 🟢 Xanh nhạt: FPS ≥ 40 / Ping ≤ 100ms (ổn)
+  - 🟡 Vàng: FPS ≥ 20 / Ping ≤ 200ms (trễ)
+  - 🔴 Đỏ: FPS < 20 / Ping > 200ms (lag/mất kết nối)
 
----
-
-## 🐛 CÁC BUG ĐÃ FIX & CÁCH FIX
-
-| Lỗi | Nguyên nhân | Cách fix |
-|------|-------------|----------|
-| Skin VIP hiển thị sai màu (mặc định "lime") | Gửi `color` thay vì `skin` | Thống nhất dùng `skin` từ client → server |
-| Particles lava đứng yên không bay | `lavaParticles` bị tạo lại mỗi frame | Chuyển vào constructor `Player` |
-| Slow không hoạt động | Dùng `data.x`, `data.y` → không tính được tốc độ | Chuyển sang gửi `dirX`, `dirY` |
-| Không toggle icon mắt đúng | Chỉ toggle `fa-eye-slash`, không đổi icon | Dùng `classList.toggle("fa-eye")` và ngược lại |
-| Bị chặn đăng nhập dù đã logout | `isonline` trong DB không được reset | Sửa server-side khi disconnect & logout |
-| Nickname bị trùng trong game | Không kiểm tra trùng nickname | Thêm kiểm tra ở server trước khi `set_nickname` |
-
----
-
-## 🧾 Tổng Kết
-
-### ✅ Đã Làm:
-- Shop real + thanh toán Stripe
-- Skin buff mạnh + animation canvas
-- Tối ưu hiệu ứng, glow, particles
-- UX nâng cao: toggle mật khẩu, feedback
-- Server xử lý slow, burn, damage multiplier
-- Đồng bộ toàn bộ logic giữa các client
-- Fix toàn bộ bug từ v1.0 → nay
-
-### 📦 Backup:
-- `Gunzilla_v2.0_full_source.rar`
-- Export MongoDB nếu cần: `users.json`, `sessions.json`, `skins.json`
+### 👑 Leaderboard nâng cấp:
+- Top 1: tên màu **vàng**
+- Top 2: **bạc**
+- Top 3: **đồng**
+- Hiển thị quốc kỳ kèm tên
 
 ---
 
-## 📍 Ready for Deployment
+## 📁 Cấu trúc dự án
 
-- Frontend: HTML, CSS, JS OOP hoàn chỉnh
-- Backend: Node.js, Express.js, Socket.IO, MongoDB, Stripe
-- Cấu trúc rõ ràng: `/public/{scripts, styles, templates}`, `/server/{routes, api, models, utils}`
-- `.env` config: MongoDB URI, Stripe KEY, PORT
+Gunzilla/
+├── public/
+│ ├── templates/ # HTML: auth, game, menu, verify, settings
+│ ├── styles/ # CSS: responsive + biến CSS
+│ ├── scripts/ # JS: game, joystick, verify, dpad, settings
+│
+├── server/
+│ ├── api/ # game.api.js, auth.api.js
+│ ├── models/ # user.model.js (có thêm country, OTP)
+│ ├── routes/ # auth.routes.js, game.routes.js
+│ ├── utils/ # logger.js, otp.service.js, mailer.js
+│ └── server.js # Khởi chạy chính
+│
+├── .env # (KHÔNG đẩy lên GitHub)
+├── README.md
+
+yaml
+Sao chép
+Chỉnh sửa
 
 ---
 
-🎉 **Gunzilla v2.0 đã sẵn sàng lên sóng!**  
-💥 Dựng server, share link, bung tiền, bung skill!  
-🔥 Và nhớ luôn backup sau mỗi lần thêm tính năng nhé 😎
+## ⚙️ Công nghệ sử dụng
+
+- Fullstack: Node.js + Express + Socket.IO + MongoDB Atlas
+- Frontend: HTML5, CSS3 (biến), JS OOP
+- Email: Nodemailer
+- Mobile control: nipplejs, touch-events
+- OTP: hệ thống tự sinh, lưu vào DB, kiểm tra thời hạn
 
 ---
+
+## 📦 Cách chạy local
+
+```bash
+npm install
+npm run dev
+
+🌐 Backup & Triển khai
+
+🛡 Backup lên GitHub (đã làm):
+
+git init
+echo ".env" > .gitignore
+git add .
+git commit -m "🎯 Gunzilla v3.0 - full anti-cheat, mobile, OTP"
+git remote add origin https://github.com/your-username/gunzilla-v3.git
+git branch -M main
+git push -u origin main
+
+🚀 Triển khai:
+
+Gợi ý: dùng Render.com, Railway, hoặc VPS riêng.
+
+🧠 Tác giả
+LâmĐZ2k11 – sinh viên & fullstack dev với đam mê game, code & đập bug
+"Code sạch, UI đẹp, anti cheat gắt = Gunzilla chất"
+
+📅 Phiên bản
+Gunzilla v3.0 – Tháng 6/2025
+Cập nhật bởi ChatGPT x LâmĐZ2k11 💥
+
+---
+
+## ✅ Sau khi thay xong README.md:
+
+```bash
+git add README.md
+git commit -m "📝 Update README.md cho Gunzilla v3.0"
+git push
